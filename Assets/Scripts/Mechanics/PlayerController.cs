@@ -5,6 +5,7 @@ using Platformer.Gameplay;
 using static Platformer.Core.Simulation;
 using Platformer.Model;
 using Platformer.Core;
+using TMPro;
 
 namespace Platformer.Mechanics
 {
@@ -17,6 +18,8 @@ namespace Platformer.Mechanics
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+
+        public TextMeshProUGUI playerName;
 
         /// <summary>
         /// Max horizontal speed of the player.
@@ -49,6 +52,13 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+
+            PlayerData playerData = FindObjectOfType<PlayerData>();
+            if (playerData != null && playerData.playerName != null) {
+                this.playerName.text = playerData.playerName;
+            } else {
+                this.playerName.text = "Player One";
+            }
         }
 
         protected override void Update()

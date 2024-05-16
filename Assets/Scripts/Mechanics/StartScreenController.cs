@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class StartScreenController : MonoBehaviour
 {
     public Button startButton;
@@ -14,7 +11,7 @@ public class StartScreenController : MonoBehaviour
     void Start()
     {
         startButton.onClick.AddListener(startGame);
-        input.text = "Player One";
+        input.text = "Player One";    
     }
 
     // Update is called once per frame
@@ -24,6 +21,10 @@ public class StartScreenController : MonoBehaviour
     }
 
     void startGame() {
-        SceneManager.LoadScene("MainScene"); 
+        GameObject playerDataObj = new GameObject("PlayerData");
+        PlayerData playerData = playerDataObj.AddComponent<PlayerData>();
+        playerData.playerName = input.text;
+        
+        SceneManager.LoadScene("MainScene");
     }
 }

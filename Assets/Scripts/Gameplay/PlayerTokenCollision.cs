@@ -18,7 +18,19 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            // Play token collection sound
             AudioSource.PlayClipAtPoint(token.tokenCollectAudio, token.transform.position);
+
+            // Add score for collecting the token
+            var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore(token.value); // Assuming each token has a 'value' property
+            }
+            else
+            {
+                Debug.LogError("ScoreManager not found in the scene!");
+            }
         }
     }
 }

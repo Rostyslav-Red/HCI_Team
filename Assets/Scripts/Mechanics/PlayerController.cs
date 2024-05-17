@@ -9,10 +9,6 @@ using TMPro;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is the main class used to implement control of the player.
-    /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
-    /// </summary>
     public class PlayerController : KinematicObject
     {
         public AudioClip jumpAudio;
@@ -21,23 +17,20 @@ namespace Platformer.Mechanics
 
         public TextMeshProUGUI playerName;
 
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
         public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        public Collider2D collider2d;
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
         bool jump;
+        int jumpCount = 0;
+        const int maxJumpCount = 2;
+
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -54,9 +47,12 @@ namespace Platformer.Mechanics
             animator = GetComponent<Animator>();
 
             PlayerData playerData = FindObjectOfType<PlayerData>();
-            if (playerData != null && playerData.playerName != null) {
+            if (playerData != null && playerData.playerName != null)
+            {
                 this.playerName.text = playerData.playerName;
-            } else {
+            }
+            else
+            {
                 this.playerName.text = "Player One";
             }
         }
@@ -66,8 +62,13 @@ namespace Platformer.Mechanics
             if (controlEnabled)
             {
                 move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
+
+                if (Input.GetButtonDown("Jump") && (jumpState == JumpState.Grounded || jumpCount < maxJumpCount))
+                {
                     jumpState = JumpState.PrepareToJump;
+                    stopJump = false;
+                    jumpCount++;
+                }
                 else if (Input.GetButtonUp("Jump"))
                 {
                     stopJump = true;
@@ -84,7 +85,6 @@ namespace Platformer.Mechanics
 
         void UpdateJumpState()
         {
-            jump = false;
             switch (jumpState)
             {
                 case JumpState.PrepareToJump:
@@ -108,13 +108,14 @@ namespace Platformer.Mechanics
                     break;
                 case JumpState.Landed:
                     jumpState = JumpState.Grounded;
+                    jumpCount = 0; // Reset the jump count when landed
                     break;
             }
         }
 
         protected override void ComputeVelocity()
         {
-            if (jump && IsGrounded)
+            if (jump)
             {
                 velocity.y = jumpTakeOffSpeed * model.jumpModifier;
                 jump = false;

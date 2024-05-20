@@ -31,6 +31,14 @@ namespace Platformer.Mechanics
         int jumpCount = 0;
         const int maxJumpCount = 2;
 
+        public float dashSpeed = 10f;
+        public float dashDuration = 0.1f;
+        public float dashCooldown = 2f;
+
+        private bool isDashing = false;
+        private float dashTime;
+        private float dashCooldownTime;
+
         Vector2 move;
         SpriteRenderer spriteRenderer;
         internal Animator animator;
@@ -74,6 +82,10 @@ namespace Platformer.Mechanics
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
+
+                if (Input.GetButtonDown("Dash") && !isDashing && Time.time >= dashCooldownTime) {
+                    StartCoroutine(playerDash());
+                }
             }
             else
             {
@@ -113,6 +125,23 @@ namespace Platformer.Mechanics
             }
         }
 
+        private IEnumerator playerDash() {
+            isDashing = true;
+            float originalSpeed = maxSpeed;
+            maxSpeed = dashSpeed;
+            dashTime = Time.time + dashDuration;
+            dashCooldownTime = Time.time + dashCooldown;
+
+            while (Time.time < dashTime)
+            {
+                move.x = Input.GetAxis("Horizontal");
+                yield return null;
+            }
+
+            maxSpeed = originalSpeed;
+            isDashing = false;
+        }
+
         protected override void ComputeVelocity()
         {
             if (jump)
@@ -129,13 +158,15 @@ namespace Platformer.Mechanics
                 }
             }
 
-            if (move.x > 0.01f)
-                spriteRenderer.flipX = false;
-            else if (move.x < -0.01f)
-                spriteRenderer.flipX = true;
+            if (!isDashing) {
+                if (move.x > 0.01f)
+                    spriteRenderer.flipX = false;
+                else if (move.x < -0.01f)
+                    spriteRenderer.flipX = true;
 
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+                animator.SetBool("grounded", IsGrounded);
+                animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            }
 
             targetVelocity = move * maxSpeed;
         }

@@ -45,6 +45,8 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
+        private ScoreManager scoreManager;
+
 
         void Awake()
         {
@@ -54,6 +56,11 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            scoreManager = FindObjectOfType<ScoreManager>();
+            if (scoreManager == null)
+            {
+                Debug.LogError("ScoreManager not found in the scene!");
+            }
 
             PlayerData playerData = FindObjectOfType<PlayerData>();
             if (playerData != null && playerData.playerName != null)
@@ -170,6 +177,28 @@ namespace Platformer.Mechanics
             }
 
             targetVelocity = move * maxSpeed;
+        }
+        
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("DeathZone"))
+            {
+                HandlePlayerDeath();
+            }
+
+            if (other.gameObject.CompareTag("Victory"))
+            {
+                scoreManager.CompleteLevel();
+            }
+        }
+
+        void HandlePlayerDeath()
+        {
+            controlEnabled = false;  // Disable player control
+            animator.SetBool("dead", true);  // Play death animation
+            audioSource.PlayOneShot(ouchAudio);  // Play death sound
+            scoreManager.CompleteLevel();  // Show victory screen (or handle as needed)
         }
 
         public enum JumpState

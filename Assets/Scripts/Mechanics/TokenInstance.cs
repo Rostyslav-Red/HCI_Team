@@ -15,7 +15,7 @@ namespace Platformer.Mechanics
     {
         public AudioClip tokenCollectAudio;
         [Tooltip("If true, animation will start at a random position in the sequence.")]
-        public int value = 10;
+        public int value = 30;
         public bool randomAnimationStartTime = false;
         [Tooltip("List of frames that make up the animation.")]
         public Sprite[] idleAnimation, collectedAnimation;

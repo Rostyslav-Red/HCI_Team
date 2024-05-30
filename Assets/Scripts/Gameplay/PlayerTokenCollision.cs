@@ -25,7 +25,7 @@ namespace Platformer.Gameplay
             var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
             if (scoreManager != null)
             {
-                scoreManager.AddScore(token.value); // Assuming each token has a 'value' property
+                scoreManager.AddScore(30); // Assuming each token has a 'value' property
             }
             else
             {

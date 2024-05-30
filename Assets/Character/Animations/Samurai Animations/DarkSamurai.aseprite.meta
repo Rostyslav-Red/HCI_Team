@@ -21,11 +21,13 @@ ScriptedImporter:
     convertToNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
     isReadable: 0
     streamingMipmaps: 0
     streamingMipmapsPriority: 0
     vTOnly: 0
-    ignoreMasterTextureLimit: 0
+    ignoreMipmapLimit: 0
     nPOTScale: 1
     sRGBTexture: 1
     spriteMode: 2
@@ -1090,6 +1092,7 @@ ScriptedImporter:
     cells:
     - name: DarkSamurai_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1098,6 +1101,7 @@ ScriptedImporter:
       spriteId: 3a33075e672023b409cdee955a362bf3
     - name: DarkSamurai_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1106,6 +1110,7 @@ ScriptedImporter:
       spriteId: 6260cb120675d5b45b3b51c33beb84a2
     - name: DarkSamurai_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1114,6 +1119,7 @@ ScriptedImporter:
       spriteId: 0384393ca2467844581beaa9bd3ccaff
     - name: DarkSamurai_Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1122,6 +1128,7 @@ ScriptedImporter:
       spriteId: 9c89ce9e165f90844b27ae9c80a6babd
     - name: DarkSamurai_Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1130,6 +1137,7 @@ ScriptedImporter:
       spriteId: 53b757b9f591f3d49a5b45d1122ac2a6
     - name: DarkSamurai_Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1138,6 +1146,7 @@ ScriptedImporter:
       spriteId: 8d0e093fdc9cb3e47bbabc61b16c20a7
     - name: DarkSamurai_Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1146,6 +1155,7 @@ ScriptedImporter:
       spriteId: 252fec7b990ccaf4b879536d9800bab7
     - name: DarkSamurai_Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1154,6 +1164,7 @@ ScriptedImporter:
       spriteId: 715bf58a3c3e0614780587062d36b99b
     - name: DarkSamurai_Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1162,6 +1173,7 @@ ScriptedImporter:
       spriteId: ba3b695111dda3442924e688fe690886
     - name: DarkSamurai_Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1170,6 +1182,7 @@ ScriptedImporter:
       spriteId: 7abf724bb79999e488ee0d2d9debf257
     - name: DarkSamurai_Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1178,6 +1191,7 @@ ScriptedImporter:
       spriteId: e9228ab2cba76f147a823c7e30cc1931
     - name: DarkSamurai_Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1186,6 +1200,7 @@ ScriptedImporter:
       spriteId: 4b9a99ef1316b8841897852f7b84a604
     - name: DarkSamurai_Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1194,6 +1209,7 @@ ScriptedImporter:
       spriteId: 77da21b909f89924883403f2ccf7b70b
     - name: DarkSamurai_Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1202,6 +1218,7 @@ ScriptedImporter:
       spriteId: 3d55744365d14f3408220498d7a38a37
     - name: DarkSamurai_Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1210,6 +1227,7 @@ ScriptedImporter:
       spriteId: 6aa0b6db4cb721e4c988d3b4697a0268
     - name: DarkSamurai_Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1218,6 +1236,7 @@ ScriptedImporter:
       spriteId: 76b0a64ccb4bb764898ceeef4401da72
     - name: DarkSamurai_Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1226,6 +1245,7 @@ ScriptedImporter:
       spriteId: e52f56b6dacc8984d9620a2c61150a87
     - name: DarkSamurai_Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1234,6 +1254,7 @@ ScriptedImporter:
       spriteId: ed9d3744ff1f91d4485d7fb4e83f9cf0
     - name: DarkSamurai_Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1242,6 +1263,7 @@ ScriptedImporter:
       spriteId: ea1a5ae60a6a83f45838a706ee1fbe34
     - name: DarkSamurai_Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1250,6 +1272,7 @@ ScriptedImporter:
       spriteId: 93875be0cab4c764cb665ba4f47d07c7
     - name: DarkSamurai_Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1258,6 +1281,7 @@ ScriptedImporter:
       spriteId: 2fc0ba53d1db6f14c97c68e8d7884314
     - name: DarkSamurai_Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1266,6 +1290,7 @@ ScriptedImporter:
       spriteId: 5b8afb7adb3588c479736a106616c01f
     - name: DarkSamurai_Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1274,6 +1299,7 @@ ScriptedImporter:
       spriteId: ab54cc27b6ac37a4a9441adbcde89663
     - name: DarkSamurai_Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1282,6 +1308,7 @@ ScriptedImporter:
       spriteId: e8ea0d1f0c0ca4c4fbf9b5439501ed7c
     - name: DarkSamurai_Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1290,6 +1317,7 @@ ScriptedImporter:
       spriteId: 3b37a4206e5bba24da4178e81f71ec51
     - name: DarkSamurai_Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1298,6 +1326,7 @@ ScriptedImporter:
       spriteId: 057bd020222428a4a85936101f39ac98
     - name: DarkSamurai_Frame_26
       frameIndex: 26
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1306,6 +1335,7 @@ ScriptedImporter:
       spriteId: faa51eb68d7b82e45ad0bebd6fae0b28
     - name: DarkSamurai_Frame_27
       frameIndex: 27
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1314,6 +1344,7 @@ ScriptedImporter:
       spriteId: 68d74c60cbd0edc49821d141e68e4477
     - name: DarkSamurai_Frame_28
       frameIndex: 28
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1322,6 +1353,7 @@ ScriptedImporter:
       spriteId: 392f29b1159041b459d8ca1aac434396
     - name: DarkSamurai_Frame_29
       frameIndex: 29
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1330,6 +1362,7 @@ ScriptedImporter:
       spriteId: 1ad3387dce409664988bfec8c75b8796
     - name: DarkSamurai_Frame_30
       frameIndex: 30
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1338,6 +1371,7 @@ ScriptedImporter:
       spriteId: 5719eba91c8c97f46aa446e9c4e2435b
     - name: DarkSamurai_Frame_31
       frameIndex: 31
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1346,6 +1380,7 @@ ScriptedImporter:
       spriteId: d22db6fa572beb241815ebdc410b880d
     - name: DarkSamurai_Frame_32
       frameIndex: 32
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1354,6 +1389,7 @@ ScriptedImporter:
       spriteId: b4a39e5703aae6d4c99147415837c7d8
     - name: DarkSamurai_Frame_33
       frameIndex: 33
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1362,6 +1398,7 @@ ScriptedImporter:
       spriteId: 73c3c699cbefa7646a9e20d813e7563e
     - name: DarkSamurai_Frame_34
       frameIndex: 34
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1370,6 +1407,7 @@ ScriptedImporter:
       spriteId: 240669e8dd421644087cd4c827e9c74a
     - name: DarkSamurai_Frame_35
       frameIndex: 35
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1378,6 +1416,7 @@ ScriptedImporter:
       spriteId: 2b4ef82ed21036b43bf04681898d5b79
     - name: DarkSamurai_Frame_36
       frameIndex: 36
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1386,6 +1425,7 @@ ScriptedImporter:
       spriteId: 36ea401afa0d7dd489032e244686ec7c
     - name: DarkSamurai_Frame_37
       frameIndex: 37
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1394,6 +1434,7 @@ ScriptedImporter:
       spriteId: 4f795cf63bd0ae740814308d4f000fd6
     - name: DarkSamurai_Frame_38
       frameIndex: 38
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1402,6 +1443,7 @@ ScriptedImporter:
       spriteId: 9057039b582ef80498881d5201c876c0
     - name: DarkSamurai_Frame_39
       frameIndex: 39
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1410,6 +1452,7 @@ ScriptedImporter:
       spriteId: 88d5dde2fc51da542a95f9a18293005d
     - name: DarkSamurai_Frame_40
       frameIndex: 40
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1418,6 +1461,7 @@ ScriptedImporter:
       spriteId: 54632a36efaf465459f9884f76ae4494
     - name: DarkSamurai_Frame_41
       frameIndex: 41
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1426,6 +1470,7 @@ ScriptedImporter:
       spriteId: 5e53bd5b5d6df3e41b3923e363f90cd8
     - name: DarkSamurai_Frame_42
       frameIndex: 42
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1434,6 +1479,7 @@ ScriptedImporter:
       spriteId: ea6ff9aa1bd1f2a42bf0e1d0997c1250
     - name: DarkSamurai_Frame_43
       frameIndex: 43
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1442,6 +1488,7 @@ ScriptedImporter:
       spriteId: 6e59d4b214e52fc4c91cf5e68ab38e50
     - name: DarkSamurai_Frame_44
       frameIndex: 44
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1450,6 +1497,7 @@ ScriptedImporter:
       spriteId: 373c0b37d4fc59f469141561b3c0c535
     - name: DarkSamurai_Frame_45
       frameIndex: 45
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1458,6 +1506,7 @@ ScriptedImporter:
       spriteId: 734a7084c4b4bd44aa66fa8d4d19fd83
     - name: DarkSamurai_Frame_46
       frameIndex: 46
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -1466,6 +1515,7 @@ ScriptedImporter:
       spriteId: 0cef366cb55066747bcbbec753c4dbce
     - name: DarkSamurai_Frame_47
       frameIndex: 47
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0

@@ -49,6 +49,7 @@ namespace Platformer.Mechanics
         void Awake()
         {
             health = GetComponent<Health>();
+            health.maxHP = 3;
             audioSource = GetComponent<AudioSource>();
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();

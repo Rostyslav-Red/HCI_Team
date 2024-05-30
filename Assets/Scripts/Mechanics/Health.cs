@@ -20,7 +20,20 @@ namespace Platformer.Mechanics
         /// </summary>
         public bool IsAlive => currentHP > 0;
 
+        public bool isInvincible = false;
+        private float invincibilityTimer = 0f;
+        public float invincibilityDuration = 2.0f;
+
         int currentHP;
+
+        void Update() {
+            if (isInvincible) {
+                invincibilityTimer -= Time.deltaTime;
+                if (invincibilityTimer <= 0f) {
+                    isInvincible = false;
+                }
+            }
+        }
 
         /// <summary>
         /// Increment the HP of the entity.
@@ -36,12 +49,19 @@ namespace Platformer.Mechanics
         /// </summary>
         public void Decrement()
         {
-            currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
-            if (currentHP == 0)
+            if (!isInvincible)
             {
-                var ev = Schedule<HealthIsZero>();
-                ev.health = this;
+                currentHP = Mathf.Clamp(currentHP - 1, 0, maxHP);
+                if (currentHP == 0) {
+                    this.Die();
+                }
+                else
+                {
+                    isInvincible = true;
+                    invincibilityTimer = invincibilityDuration;
+                }
             }
+
         }
 
         /// <summary>
@@ -49,7 +69,9 @@ namespace Platformer.Mechanics
         /// </summary>
         public void Die()
         {
-            while (currentHP > 0) Decrement();
+            currentHP = 0;
+            var ev = Schedule<HealthIsZero>();
+            ev.health = this;
         }
 
         void Awake()

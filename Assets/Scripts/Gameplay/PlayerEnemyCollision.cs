@@ -44,9 +44,17 @@ namespace Platformer.Gameplay
                     player.Bounce(2);
                 }
             }
-            else
-            {
-                Schedule<PlayerDeath>();
+            else {
+                Health playerHealth = player.GetComponent<Health>();
+                if (playerHealth != null && playerHealth.IsAlive) {
+                    playerHealth.Decrement(); 
+                    player.animator.SetTrigger("hurt");
+
+                    if (!playerHealth.IsAlive) {
+                        player.animator.ResetTrigger("hurt");
+                        Schedule<PlayerDeath>();
+                    }
+                }
             }
         }
     }

@@ -21,5 +21,16 @@ namespace Platformer.Mechanics
                 ev.deathzone = this;
             }
         }
+
+        void OnDrawGizmos()
+        {
+            // Set the color of the Gizmos
+            Gizmos.color = Color.red;
+            // Draw a wireframe cube with the same position and size as the BoxCollider2D
+            var collider = GetComponent<BoxCollider2D>();
+            Gizmos.DrawWireCube(transform.position + (Vector3)collider.offset, collider.size);
+        }
+
+
     }
 }

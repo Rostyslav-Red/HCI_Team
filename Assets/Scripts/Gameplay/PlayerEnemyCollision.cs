@@ -16,10 +16,11 @@ namespace Platformer.Gameplay
         public EnemyController enemy;
         public PlayerController player;
 
-        PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private ScoreManager scoreManager; 
 
         public override void Execute()
         {
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>(); 
             var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
 
             if (willHurtEnemy)
@@ -32,6 +33,8 @@ namespace Platformer.Gameplay
                     {
                         Schedule<EnemyDeath>().enemy = enemy;
                         player.Bounce(2);
+                        scoreManager.AddScore(10);
+
                     }
                     else
                     {
@@ -49,6 +52,7 @@ namespace Platformer.Gameplay
                 if (playerHealth != null && playerHealth.IsAlive) {
                     playerHealth.Decrement(); 
                     player.animator.SetTrigger("hurt");
+                    scoreManager.AddScore(-50); // Add score for defeating an enemy
 
                     if (!playerHealth.IsAlive) {
                         player.animator.ResetTrigger("hurt");

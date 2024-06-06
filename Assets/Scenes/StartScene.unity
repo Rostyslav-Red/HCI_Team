@@ -270,8 +270,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter your name...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e0ac114983634458a7a3fa55a61c877, type: 2}
-  m_sharedMaterial: {fileID: -1315451022041708381, guid: 9e0ac114983634458a7a3fa55a61c877,
+  m_fontAsset: {fileID: 11400000, guid: cf93d186cbe0e479ea713dca94bef8c7, type: 2}
+  m_sharedMaterial: {fileID: 7152751999572565282, guid: cf93d186cbe0e479ea713dca94bef8c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1443,8 +1443,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e0ac114983634458a7a3fa55a61c877, type: 2}
-  m_sharedMaterial: {fileID: -1315451022041708381, guid: 9e0ac114983634458a7a3fa55a61c877,
+  m_fontAsset: {fileID: 11400000, guid: cf93d186cbe0e479ea713dca94bef8c7, type: 2}
+  m_sharedMaterial: {fileID: 7152751999572565282, guid: cf93d186cbe0e479ea713dca94bef8c7,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

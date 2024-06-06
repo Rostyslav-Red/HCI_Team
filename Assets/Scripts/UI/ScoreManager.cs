@@ -7,9 +7,8 @@ public class ScoreManager : MonoBehaviour
     private int score;
     public TMPro.TextMeshProUGUI scoreText;
     private float timeCounter = 0;
-    public float timeLimit = 60.0f;  // Total time for the level
 
-    void Start()
+    public void Start()
     {
         score = initialScore;
         UpdatescoreText();
@@ -25,12 +24,6 @@ public class ScoreManager : MonoBehaviour
             timeCounter = 0;  // Reset the counter
             UpdatescoreText();
         }
-
-        // Check if time is up
-        if (Time.timeSinceLevelLoad > timeLimit)
-        {
-            EndLevel();
-        }
     }
 
     public void AddScore(int amount)
@@ -42,11 +35,5 @@ public class ScoreManager : MonoBehaviour
     private void UpdatescoreText()
     {
         scoreText.text = "Score: " + score;
-    }
-
-    private void EndLevel()
-    {
-        // Here, handle what happens when the level ends, e.g., show game over screen
-        Debug.Log("Time's up! Final score: " + score);
     }
 }

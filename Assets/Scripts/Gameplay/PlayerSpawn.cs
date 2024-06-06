@@ -1,6 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -10,9 +11,13 @@ namespace Platformer.Gameplay
     public class PlayerSpawn : Simulation.Event<PlayerSpawn>
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private ScoreManager scoreManager;
 
         public override void Execute()
         {
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>(); 
+            scoreManager.Start();
+    
             var player = model.player;
             player.collider2d.enabled = true;
             player.controlEnabled = false;

@@ -1,5 +1,5 @@
 using Platformer.Mechanics;
-using Platformer.UI;
+using Platformer.Gameplay;
 using UnityEngine;
 
 namespace Platformer.UI
@@ -65,6 +65,13 @@ namespace Platformer.UI
         }
 
         public void OnPlayerVictory() {
+            int playerScore = GameObject.FindAnyObjectByType<ScoreManager>().GetScore();
+            var highScoreManager = GameObject.FindAnyObjectByType<HighScoreManager>();
+            PlayerData playerData = FindObjectOfType<PlayerData>();
+
+            var playerName = playerData?.playerName ?? "Player One";
+            highScoreManager.CheckAndAddHighScore(playerScore, playerName);
+
             Time.timeScale = 0;
             foreach (var canvas in gamePlayCanvasii) {
                 canvas.gameObject.SetActive(false);

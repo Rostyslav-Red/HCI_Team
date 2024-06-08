@@ -84,7 +84,8 @@ namespace Platformer.Mechanics
                     Schedule<PlayerStopJump>().player = this;
                 }
 
-                if (Input.GetButtonDown("Dash") && !isDashing && Time.time >= dashCooldownTime) {
+                if (Input.GetButtonDown("Dash") && !isDashing && Time.time >= dashCooldownTime)
+                {
                     StartCoroutine(playerDash());
                 }
             }
@@ -126,7 +127,8 @@ namespace Platformer.Mechanics
             }
         }
 
-        private IEnumerator playerDash() {
+        private IEnumerator playerDash()
+        {
             isDashing = true;
             float originalSpeed = maxSpeed;
             maxSpeed = dashSpeed;
@@ -159,7 +161,8 @@ namespace Platformer.Mechanics
                 }
             }
 
-            if (!isDashing) {
+            if (!isDashing)
+            {
                 if (move.x > 0.01f)
                     spriteRenderer.flipX = false;
                 else if (move.x < -0.01f)
@@ -170,6 +173,16 @@ namespace Platformer.Mechanics
             }
 
             targetVelocity = move * maxSpeed;
+        }
+
+        public void Teleport(Vector3 position)
+        {
+            transform.position = position;  // Teleports the player to the given position
+        }
+
+        public void Bounce(float force)
+        {
+            velocity.y = force;  // Applies an immediate force to the player's vertical velocity
         }
 
         public enum JumpState

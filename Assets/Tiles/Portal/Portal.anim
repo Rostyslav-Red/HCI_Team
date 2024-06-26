@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: Portal
   serializedVersion: 6
-  m_Legacy: 0
+  m_Legacy: 1
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -47,24 +47,8 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: 21300000, guid: 7369f4fe861825a46994649758b20a4d, type: 3}
-    - {fileID: 21300000, guid: 6f40cfc61c30a8d43aa1e88e2fe712a3, type: 3}
-    - {fileID: 21300000, guid: cf9c2dcae76a143489adb400680af2ec, type: 3}
-    - {fileID: 21300000, guid: 862c6377251041044bb51046e953701c, type: 3}
-    - {fileID: 21300000, guid: fb03e4af7e017b24fa14e318d706b94f, type: 3}
-    - {fileID: 21300000, guid: ca807c3c0cb7583418d11bc41c419293, type: 3}
-    - {fileID: 21300000, guid: 3aa78866a6eea2b4385bc65eafe4d2dc, type: 3}
-    - {fileID: 21300000, guid: 7f00eacef4f6ffb4395135c84c511f02, type: 3}
-    - {fileID: 21300000, guid: 1ca3a5e220587cb4b918b27d4aac784e, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

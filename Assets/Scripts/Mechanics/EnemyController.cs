@@ -75,9 +75,7 @@ namespace Platformer.Mechanics
             isDead = true;
             if (animator != null)
             {
-                animator.SetTrigger("death");  // Trigger the death animation
-                Debug.Log("Death animation triggered.");
-            }
+                animator.SetTrigger("death");}
             if (_audio != null && ouch != null)
             {
                 _audio.PlayOneShot(ouch);  // Play the death sound
@@ -89,9 +87,7 @@ namespace Platformer.Mechanics
         private IEnumerator RemoveAfterDeath()
         {
             float waitTime = 0.85f;  // Adjust based on actual animation length
-            Debug.Log("Waiting for " + waitTime + " seconds before removing enemy.");
             yield return new WaitForSeconds(waitTime);  // Wait for the animation to play out
-            Debug.Log("Removing enemy from scene.");
             Destroy(gameObject);  // Remove the enemy from the scene
         }
     }

@@ -13,11 +13,8 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshProUGUI FinalScoreText;      // Reference to display final score
     public TMPro.TextMeshProUGUI LeaderboardText;
     private float timeCounter = 0;
-    public float timeLimit = 60.0f;  // Total time for the level
-    private bool isLevelCompleted = false;
-    private List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
 
-    void Start()
+    public void Start()
     {
         score = initialScore;
         UpdatescoreText();
@@ -36,13 +33,6 @@ public class ScoreManager : MonoBehaviour
             timeCounter = 0;  // Reset the counter
             UpdatescoreText();
         }
-
-        // Check if time is up
-        if (Time.timeSinceLevelLoad > timeLimit)
-        {
-            CompleteLevel();
-        }
-        }
     }
 
     public void AddScore(int amount)
@@ -59,15 +49,8 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
-    public void CompleteLevel()
-    {
-        isLevelCompleted = true;
-        VictoryPanel.SetActive(true);  // Show victory panel
-        FinalScoreText.text = "Final Score: " + score;  // Display the final score
-        AddToLeaderboard("Player One", score);  // Add the player to the leaderboard
-        UpdateLeaderboardDisplay();
-        
-        Debug.Log("Level completed! Final score: " + score);
+    public int GetScore() {
+        return this.score;
     }
     private void AddToLeaderboard(string playerName, int playerScore)
     {

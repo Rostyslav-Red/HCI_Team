@@ -24,7 +24,7 @@ namespace Platformer.Mechanics
         private float invincibilityTimer = 0f;
         public float invincibilityDuration = 2.0f;
 
-        int currentHP;
+        public int currentHP;
 
         void Update() {
             if (isInvincible) {
@@ -72,6 +72,10 @@ namespace Platformer.Mechanics
             currentHP = 0;
             var ev = Schedule<HealthIsZero>();
             ev.health = this;
+        }
+
+        public void Reset() {
+            currentHP = maxHP;
         }
 
         void Awake()

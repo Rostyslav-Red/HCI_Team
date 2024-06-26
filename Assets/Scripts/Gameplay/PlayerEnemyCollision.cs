@@ -6,7 +6,6 @@ using static Platformer.Core.Simulation;
 
 namespace Platformer.Gameplay
 {
-
     /// <summary>
     /// Fired when a Player collides with an Enemy.
     /// </summary>
@@ -16,10 +15,11 @@ namespace Platformer.Gameplay
         public EnemyController enemy;
         public PlayerController player;
 
-        PlatformerModel model = Simulation.GetModel<PlatformerModel>();
+        private ScoreManager scoreManager;
 
         public override void Execute()
         {
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
             var willHurtEnemy = player.Bounds.center.y >= enemy.Bounds.max.y;
 
             if (willHurtEnemy)
@@ -32,6 +32,7 @@ namespace Platformer.Gameplay
                     {
                         Schedule<EnemyDeath>().enemy = enemy;
                         player.Bounce(2);
+                        scoreManager.AddScore(10);
                     }
                     else
                     {
@@ -44,13 +45,23 @@ namespace Platformer.Gameplay
                     player.Bounce(2);
                 }
             }
-            else {
+            else
+            {
                 Health playerHealth = player.GetComponent<Health>();
-                if (playerHealth != null && playerHealth.IsAlive) {
-                    playerHealth.Decrement(); 
+                if (playerHealth != null && playerHealth.IsAlive)
+                {
+                    playerHealth.Decrement();
                     player.animator.SetTrigger("hurt");
+                    scoreManager.AddScore(-50);
 
-                    if (!playerHealth.IsAlive) {
+                    // Play hurt sound if available
+                    if (player.audioSource != null && player.ouchAudio != null)
+                    {
+                        player.audioSource.PlayOneShot(player.ouchAudio);
+                    }
+
+                    if (!playerHealth.IsAlive)
+                    {
                         player.animator.ResetTrigger("hurt");
                         Schedule<PlayerDeath>();
                     }

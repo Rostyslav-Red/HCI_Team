@@ -1,6 +1,8 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
+using Platformer.UI;
 
 namespace Platformer.Gameplay
 {
@@ -17,8 +19,14 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            Debug.Log("victory");
             model.player.animator.SetTrigger("victory");
             model.player.controlEnabled = false;
+            var metaGameController = GameObject.FindObjectOfType<MetaGameController>();
+            if (metaGameController != null)
+            {
+                metaGameController.OnPlayerVictory();
+            }
         }
     }
 }

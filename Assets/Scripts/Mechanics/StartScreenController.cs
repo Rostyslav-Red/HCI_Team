@@ -23,7 +23,8 @@ public class StartScreenController : MonoBehaviour
     void startGame() {
         GameObject playerDataObj = new GameObject("PlayerData");
         PlayerData playerData = playerDataObj.AddComponent<PlayerData>();
-        playerData.playerName = input.text;
+        if (input.text.Length > 15) playerData.playerName = input.text.Substring(0, 15);
+        else playerData.playerName = input.text;
         
         SceneManager.LoadScene("MainScene");
     }

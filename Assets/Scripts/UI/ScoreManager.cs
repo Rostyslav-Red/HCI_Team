@@ -18,7 +18,8 @@ public class ScoreManager : MonoBehaviour
     // Simple leaderboard
     private List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
 
-    void Start()
+    // Changed Start to public Initialize to explicitly call it if needed from other scripts
+    public void Initialize()
     {
         score = initialScore;
         UpdateScoreText();
@@ -44,6 +45,12 @@ public class ScoreManager : MonoBehaviour
                 CompleteLevel();
             }
         }
+    }
+
+    // Public method to get the current score
+    public int GetScore()
+    {
+        return score;
     }
 
     public void AddScore(int amount)

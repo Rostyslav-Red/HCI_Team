@@ -190,7 +190,7 @@ namespace Platformer.Mechanics
                 HandlePlayerDeath();
             }
 
-            if (other.gameObject.CompareTag("Victory"))
+            if (other.gameObject.CompareTag("VictoryZone"))
             {
                 scoreManager.CompleteLevel();
             }

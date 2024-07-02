@@ -54500,7 +54500,7 @@ MonoBehaviour:
   mainMenu: {fileID: 2110646551}
   gamePlayCanvasii: []
   gameController: {fileID: 1754240607}
-  victoryCanvas: {fileID: 0}
+  victoryCanvas: {fileID: 1116735908}
 --- !u!82 &1754240611
 AudioSource:
   m_ObjectHideFlags: 0
@@ -54611,6 +54611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialScore: 500
   scoreText: {fileID: 1886308452}
+  VictoryPanel: {fileID: 254933470}
+  FinalScoreText: {fileID: 184597848}
+  LeaderboardText: {fileID: 1347100645}
+  timeLimit: 60
 --- !u!114 &1754240613
 MonoBehaviour:
   m_ObjectHideFlags: 0

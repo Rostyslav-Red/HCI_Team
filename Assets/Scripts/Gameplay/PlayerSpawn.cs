@@ -15,9 +15,9 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
-            scoreManager = GameObject.FindObjectOfType<ScoreManager>(); 
-            scoreManager.Start();
-    
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            scoreManager.Initialize();
+
             var player = model.player;
             player.collider2d.enabled = true;
             player.controlEnabled = false;

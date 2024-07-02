@@ -27,9 +27,10 @@ namespace Platformer.UI
 
         bool showMainCanvas = false;
 
-        public Canvas victoryCanvas; 
+        public Canvas victoryCanvas;
 
-        void OnEnable() {
+        void OnEnable()
+        {
             _ToggleMainMenu(showMainCanvas);
             victoryCanvas.gameObject.SetActive(false);
         }
@@ -38,19 +39,24 @@ namespace Platformer.UI
         /// Turn the main menu on or off.
         /// </summary>
         /// <param name="show"></param>
-        public void ToggleMainMenu(bool show) {
-            if (this.showMainCanvas != show) {
+        public void ToggleMainMenu(bool show)
+        {
+            if (this.showMainCanvas != show)
+            {
                 _ToggleMainMenu(show);
             }
         }
 
-        void _ToggleMainMenu(bool show) {
-            if (show) {
+        void _ToggleMainMenu(bool show)
+        {
+            if (show)
+            {
                 Time.timeScale = 0;
                 mainMenu.gameObject.SetActive(true);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
             }
-            else {
+            else
+            {
                 Time.timeScale = 1;
                 mainMenu.gameObject.SetActive(false);
                 foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
@@ -58,26 +64,34 @@ namespace Platformer.UI
             this.showMainCanvas = show;
         }
 
-        void Update() {
-            if (Input.GetButtonDown("Menu")) {
-                ToggleMainMenu(show: !showMainCanvas);
+        void Update()
+        {
+            if (Input.GetButtonDown("Menu"))
+            {
+                ToggleMainMenu(!showMainCanvas);
             }
         }
 
-        public void OnPlayerVictory() {
-            int playerScore = GameObject.FindAnyObjectByType<ScoreManager>().GetScore();
-            var highScoreManager = GameObject.FindAnyObjectByType<HighScoreManager>();
+        public void OnPlayerVictory()
+        {
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+            int playerScore = scoreManager != null ? scoreManager.GetScore() : 0;
+            HighScoreManager highScoreManager = FindObjectOfType<HighScoreManager>();
             PlayerData playerData = FindObjectOfType<PlayerData>();
 
-            var playerName = playerData?.playerName ?? "Player One";
-            highScoreManager.CheckAndAddHighScore(playerScore, playerName);
+            var playerName = playerData != null ? playerData.playerName : "Player One";
+            if (highScoreManager != null)
+            {
+                highScoreManager.CheckAndAddHighScore(playerScore, playerName);
+            }
 
             Time.timeScale = 0;
-            foreach (var canvas in gamePlayCanvasii) {
+            foreach (var canvas in gamePlayCanvasii)
+            {
                 canvas.gameObject.SetActive(false);
             }
 
-            victoryCanvas.gameObject.SetActive(true); 
+            victoryCanvas.gameObject.SetActive(true);
         }
     }
 }

@@ -2,6 +2,7 @@ using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Platformer.Gameplay
 {
@@ -17,6 +18,9 @@ namespace Platformer.Gameplay
         {
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
             scoreManager.Initialize();
+
+            var tokenController = GameObject.FindObjectOfType<TokenController>();
+            tokenController.ResetTokens();
 
             var player = model.player;
             player.collider2d.enabled = true;

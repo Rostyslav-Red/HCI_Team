@@ -51,19 +51,24 @@ namespace Platformer.Mechanics
                     if (token != null)
                     {
                         token._renderer.sprite = token.sprites[token.frame];
-                        if (token.collected && token.frame == token.sprites.Length - 1)
-                        {
-                            token.gameObject.SetActive(false);
-                            tokens[i] = null;
-                        }
-                        else
-                        {
+                        if (!token.collected && token.frame != token.sprites.Length - 1) {
                             token.frame = (token.frame + 1) % token.sprites.Length;
                         }
                     }
                 }
                 //calculate the time of the next frame.
                 nextFrameTime += 1f / frameRate;
+            }
+        }
+
+        public void ResetTokens()
+        {
+            for (var i = 0; i < tokens.Length; i++)
+            {
+                if (tokens[i] != null)
+                {
+                    tokens[i].ResetToken();
+                }
             }
         }
 

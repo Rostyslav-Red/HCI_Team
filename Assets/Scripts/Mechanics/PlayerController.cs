@@ -45,7 +45,6 @@ namespace Platformer.Mechanics
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public Bounds Bounds => collider2d.bounds;
-        private ScoreManager scoreManager;
 
 
         void Awake()
@@ -56,11 +55,6 @@ namespace Platformer.Mechanics
             collider2d = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            scoreManager = FindObjectOfType<ScoreManager>();
-            if (scoreManager == null)
-            {
-                Debug.LogError("ScoreManager not found in the scene!");
-            }
 
             PlayerData playerData = FindObjectOfType<PlayerData>();
             if (playerData != null && playerData.playerName != null)
@@ -192,7 +186,7 @@ namespace Platformer.Mechanics
 
             if (other.gameObject.CompareTag("VictoryZone"))
             {
-                scoreManager.CompleteLevel();
+                Schedule<HealthIsZero>();
             }
         }
 
@@ -201,7 +195,7 @@ namespace Platformer.Mechanics
             controlEnabled = false;  // Disable player control
             animator.SetBool("dead", true);  // Play death animation
             audioSource.PlayOneShot(ouchAudio);  // Play death sound
-            scoreManager.CompleteLevel();  // Show victory screen (or handle as needed)
+            Schedule<HealthIsZero>();  // Show victory screen (or handle as needed)
         }
 
         public void Teleport(Vector3 position)

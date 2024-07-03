@@ -54,10 +54,20 @@ namespace Platformer.Mechanics
             sprites = collectedAnimation;
             if (controller != null)
                 collected = true;
+    
+            gameObject.SetActive(false);
             //send an event into the gameplay system to perform some behaviour.
             var ev = Schedule<PlayerTokenCollision>();
             ev.token = this;
             ev.player = player;
+        }
+
+        public void ResetToken()
+        {
+            collected = false;
+            sprites = idleAnimation;
+            frame = 0;
+            gameObject.SetActive(true);
         }
     }
 }

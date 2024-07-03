@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using Platformer.Gameplay;
+using static Platformer.Core.Simulation;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -15,15 +17,11 @@ public class ScoreManager : MonoBehaviour
     public float timeLimit = 60.0f;  // Total time for the level
     private bool isLevelCompleted = false;
 
-    // Simple leaderboard
-    private List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
-
     // Changed Start to public Initialize to explicitly call it if needed from other scripts
     public void Initialize()
     {
         score = initialScore;
         UpdateScoreText();
-        VictoryPanel.SetActive(false);  // Hide victory panel initially
     }
 
     void Update()
@@ -42,7 +40,7 @@ public class ScoreManager : MonoBehaviour
             // Check if time is up
             if (Time.timeSinceLevelLoad > timeLimit)
             {
-                CompleteLevel();
+                Schedule<PlayerDeath>();
             }
         }
     }
@@ -65,32 +63,6 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + score;
-    }
-
-    public void CompleteLevel()
-    {
-        isLevelCompleted = true;
-        Time.timeScale = 0f;  // Pause the game
-        VictoryPanel.SetActive(true);  // Show victory panel
-        FinalScoreText.text = "Final Score: " + score;  // Display the final score
-        AddToLeaderboard("Player One", score);  // Add the player to the leaderboard
-        UpdateLeaderboardDisplay();
-        Debug.Log("Level completed! Final score: " + score);
-    }
-
-    private void AddToLeaderboard(string playerName, int playerScore)
-    {
-        leaderboard.Add(new LeaderboardEntry { Name = playerName, Score = playerScore });
-        leaderboard.Sort((entry1, entry2) => entry2.Score.CompareTo(entry1.Score));  // Sort in descending order
-    }
-
-    private void UpdateLeaderboardDisplay()
-    {
-        LeaderboardText.text = "Leaderboard:\n";
-        foreach (var entry in leaderboard)
-        {
-            LeaderboardText.text += entry.Name + " - " + entry.Score + "\n";
-        }
     }
 
     private class LeaderboardEntry

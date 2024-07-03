@@ -11,8 +11,6 @@ public class ScoreManager : MonoBehaviour
     private int score;
     public TextMeshProUGUI scoreText;
     public GameObject VictoryPanel;  // Reference to the VictoryPanel
-    public TextMeshProUGUI FinalScoreText;      // Reference to display final score
-    public TextMeshProUGUI LeaderboardText;
     private float timeCounter = 0;
     public float timeLimit = 60.0f;  // Total time for the level
     private bool isLevelCompleted = false;
@@ -22,6 +20,10 @@ public class ScoreManager : MonoBehaviour
     {
         score = initialScore;
         UpdateScoreText();
+    }
+
+    public void Awake() {
+        Initialize();
     }
 
     void Update()
@@ -35,12 +37,6 @@ public class ScoreManager : MonoBehaviour
                 score -= 50;  // Deduct points every 5 seconds
                 timeCounter = 0;  // Reset the counter
                 UpdateScoreText();
-            }
-
-            // Check if time is up
-            if (Time.timeSinceLevelLoad > timeLimit)
-            {
-                Schedule<PlayerDeath>();
             }
         }
     }

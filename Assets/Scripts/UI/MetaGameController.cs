@@ -1,6 +1,8 @@
 using Platformer.Mechanics;
 using Platformer.Gameplay;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace Platformer.UI
 {
@@ -28,6 +30,10 @@ namespace Platformer.UI
         bool showMainCanvas = false;
 
         public Canvas victoryCanvas;
+
+        public TextMeshProUGUI FinalScoreText;      
+        public TextMeshProUGUI LeaderboardText;
+        public TextMeshProUGUI LeaderboardText2;
 
         void OnEnable()
         {
@@ -92,6 +98,24 @@ namespace Platformer.UI
             }
 
             victoryCanvas.gameObject.SetActive(true);
+
+            FinalScoreText.text = "Your Score: " + playerScore;
+            for (int i = 0; i < highScoreManager.highScoreList.highScores.Count; i++)
+            {
+                string entryText = $"{i + 1}. " + $"{highScoreManager.highScoreList.highScores[i].playerName}: {highScoreManager.highScoreList.highScores[i].score}\n";
+                if (i < 5)
+                {
+                    LeaderboardText.text += entryText;
+                }
+                else
+                {
+                    LeaderboardText2.text += entryText;
+                }
+            }
+        }
+
+        public void exitGame() {
+            SceneManager.LoadScene("StartScene");
         }
     }
 }

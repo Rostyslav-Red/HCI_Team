@@ -40,26 +40,21 @@ namespace Platformer.Mechanics
 
         void Update()
         {
-            //if it's time for the next frame...
-            if (Time.time - nextFrameTime > (1f / frameRate))
+            if (Time.time >= nextFrameTime)
             {
-                //update all tokens with the next animation frame.
-                for (var i = 0; i < tokens.Length; i++)
+                foreach (var token in tokens)
                 {
-                    var token = tokens[i];
-                    //if token is null, it has been disabled and is no longer animated.
-                    if (token != null)
+                    if (token != null && !token.collected)
                     {
                         token._renderer.sprite = token.sprites[token.frame];
-                        if (!token.collected && token.frame != token.sprites.Length - 1) {
-                            token.frame = (token.frame + 1) % token.sprites.Length;
-                        }
+                        token.frame = (token.frame + 1) % token.sprites.Length;
                     }
                 }
-                //calculate the time of the next frame.
-                nextFrameTime += 1f / frameRate;
+                nextFrameTime = Time.time + (1f / frameRate);
             }
         }
+
+
 
         public void ResetTokens()
         {

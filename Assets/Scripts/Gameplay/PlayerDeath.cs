@@ -23,7 +23,7 @@ namespace Platformer.Gameplay
             player.controlEnabled = false;
 
             if (player.audioSource && player.ouchAudio)
-                player.audioSource.PlayOneShot(player.ouchAudio);
+                player.audioSource.PlayOneShot(player.deathAudio, 0.6f);
             player.animator.SetTrigger("hurt");
             player.animator.SetBool("dead", true);
             Simulation.Schedule<PlayerSpawn>(3);

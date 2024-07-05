@@ -1,6 +1,8 @@
 using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
+using System.Collections;
+
 
 
 namespace Platformer.Mechanics
@@ -34,10 +36,11 @@ namespace Platformer.Mechanics
         void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
+            sprites = idleAnimation;  // Ensure this is before setting the frame if randomizing
             if (randomAnimationStartTime)
                 frame = Random.Range(0, sprites.Length);
-            sprites = idleAnimation;
         }
+
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -49,18 +52,46 @@ namespace Platformer.Mechanics
         void OnPlayerEnter(PlayerController player)
         {
             if (collected) return;
-            //disable the gameObject and remove it from the controller update list.
-            frame = 0;
+
+            collected = true;
             sprites = collectedAnimation;
-            if (controller != null)
-                collected = true;
-    
-            gameObject.SetActive(false);
-            //send an event into the gameplay system to perform some behaviour.
+            frame = 0;
+
+            StartCoroutine(DisableAfterAnimation());
+
+            // Schedule the collision event
             var ev = Schedule<PlayerTokenCollision>();
             ev.token = this;
             ev.player = player;
+
         }
+
+
+        IEnumerator DisableAfterAnimation()
+        {
+            if (controller == null)
+            {
+                Debug.LogError("Controller is not assigned!");
+                yield break;
+            }
+
+            // Calculate wait time based on the number of frames in the collected animation and the frame rate
+            float waitTime = collectedAnimation.Length / controller.frameRate;
+
+            // Reset frame to start collected animation from the first frame
+            frame = 0;
+
+            // Animate collected frames before disabling the game object
+            for (int i = 0; i < collectedAnimation.Length; i++)
+            {
+                _renderer.sprite = collectedAnimation[i];
+                yield return new WaitForSeconds(1f / controller.frameRate); // Wait for one frame duration before continuing to the next frame
+            }
+
+            gameObject.SetActive(false);
+        }
+
+
 
         public void ResetToken()
         {

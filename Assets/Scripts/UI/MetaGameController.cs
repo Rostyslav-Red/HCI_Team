@@ -101,12 +101,10 @@ namespace Platformer.UI
             victoryCanvas.gameObject.SetActive(true);
 
             Animator backgroundAnimator = backgroundWithAnimator.GetComponent<Animator>();
-            Debug.Log("We're at this point");
             if (backgroundAnimator != null)
             {
                 backgroundAnimator.Rebind(); // Resets the animator to its default state
                 backgroundAnimator.Play("Cherry Blossom Animation", -1, 0f); // Play the animation from start
-                Debug.Log("Animation should be playing: " + backgroundAnimator.GetCurrentAnimatorStateInfo(0).IsName("Cherry Blossom Animation"));
             }
 
 
